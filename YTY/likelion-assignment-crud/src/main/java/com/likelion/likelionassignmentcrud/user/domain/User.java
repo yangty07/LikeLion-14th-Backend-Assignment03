@@ -1,6 +1,7 @@
 package com.likelion.likelionassignmentcrud.user.domain;
 
 import com.likelion.likelionassignmentcrud.player.domain.Player;
+import com.likelion.likelionassignmentcrud.user.api.dto.request.UserUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -37,5 +38,11 @@ public class User {
         this.name = name;
         this.email = email;
         this.part = part;
+    }
+
+    public void update(UserUpdateRequestDto userUpdateRequestDto) {
+        this.name = userUpdateRequestDto.name();
+        this.email = userUpdateRequestDto.email();
+        this.part = userUpdateRequestDto.part();
     }
 }

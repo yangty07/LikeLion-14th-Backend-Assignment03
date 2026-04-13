@@ -47,9 +47,17 @@ public class UserService {
 
 
     public void userUpdate(Long userId, UserUpdateRequestDto userUpdateRequestDto) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        user.update(userUpdateRequestDto);
     }
 
     public void userDelete(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        userRepository.delete(user);
 
     }
 }

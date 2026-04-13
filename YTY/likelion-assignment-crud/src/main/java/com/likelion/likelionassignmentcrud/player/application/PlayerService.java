@@ -47,10 +47,21 @@ public class PlayerService {
         return PlayerListResponseDto.from(playerInfoResponseDtos);
     }
 
-    public void playerDelete(Long playerrId) {
-    }
-
-
     public void playerUpdate(Long playerId, PlayerUpdateRequestDto playerUpdateRequestDto) {
+        Player player = playerRepository.findById(playerId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        player.update(playerUpdateRequestDto);
+
     }
+
+
+    public void playerDelete(Long playerId) {
+        Player player = playerRepository.findById(playerId)
+                .orElseThrow(IllegalArgumentException::new);
+        playerRepository.delete(player);
+    }
+
+
+
 }

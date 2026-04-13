@@ -1,5 +1,6 @@
 package com.likelion.likelionassignmentcrud.player.domain;
 
+import com.likelion.likelionassignmentcrud.player.api.dto.request.PlayerUpdateRequestDto;
 import com.likelion.likelionassignmentcrud.user.domain.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,5 +44,12 @@ public class Player {
         this.age = age;
         this.height = height;
         this.user = user;
+    }
+
+    public void update(PlayerUpdateRequestDto playerUpdateRequestDto) {
+        this.gender = playerUpdateRequestDto.gender();
+        this.personality = playerUpdateRequestDto.personality();
+        this.age = playerUpdateRequestDto.age();
+        this.height = playerUpdateRequestDto.height();
     }
 }
