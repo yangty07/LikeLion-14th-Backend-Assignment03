@@ -47,6 +47,7 @@ public class PlayerService {
         return PlayerListResponseDto.from(playerInfoResponseDtos);
     }
 
+    @Transactional
     public void playerUpdate(Long playerId, PlayerUpdateRequestDto playerUpdateRequestDto) {
         Player player = playerRepository.findById(playerId)
                 .orElseThrow(IllegalArgumentException::new);
@@ -55,7 +56,7 @@ public class PlayerService {
 
     }
 
-
+    @Transactional
     public void playerDelete(Long playerId) {
         Player player = playerRepository.findById(playerId)
                 .orElseThrow(IllegalArgumentException::new);

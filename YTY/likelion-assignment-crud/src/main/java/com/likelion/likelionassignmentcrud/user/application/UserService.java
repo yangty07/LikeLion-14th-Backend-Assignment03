@@ -45,7 +45,7 @@ public class UserService {
         return UserListResponseDto.from(userInfoResponseDtoList);
     }
 
-
+    @Transactional
     public void userUpdate(Long userId, UserUpdateRequestDto userUpdateRequestDto) {
         User user = userRepository.findById(userId)
                 .orElseThrow(IllegalArgumentException::new);
@@ -53,6 +53,7 @@ public class UserService {
         user.update(userUpdateRequestDto);
     }
 
+    @Transactional
     public void userDelete(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(IllegalArgumentException::new);
